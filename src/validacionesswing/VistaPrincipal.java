@@ -138,7 +138,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
               }
             
         } else if(rbtnLetras.isSelected()) {
+            String[] listaLetras = contador.contadorLetras(txtString.getText());
 
+            for (String a : listaLetras) {
+                System.out.println(a);
+                model.addElement(a);
+              }
         }
         
         lstElementos.setModel(model);

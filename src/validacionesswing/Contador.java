@@ -17,25 +17,17 @@ public class Contador {
    
       String[] palabras = frase.split("\\W");
       return palabras;
-      
-       /*   int finalCadena = frase.length() - 1;
-       boolean palabra = false;
-        
+    }
+
+    public String [] contadorLetras(String frase) {
+               
+        String [] letras = new String[frase.length()];
         for (int x = 0; x < frase.length(); x++) {
-            if (Character.isLetter(frase.charAt(x)) && x != finalCadena) {
-                palabra = true;
-            } else if (!Character.isLetter(frase.charAt(x)) && palabra) {
-                contador++;
-            }else if(Character.isLetter(frase.charAt(x)) && x == finalCadena){
-                contador++;
-            }
-        }*/
-      
-      
+            if (Character.isLetter(frase.charAt(x)) ) {
+                letras[x]=String.valueOf(frase.charAt(x));
+               
+            } 
+        }
+        return letras; 
     }
-
-    public void contadorLetras() {
-
-    }
-
 }
