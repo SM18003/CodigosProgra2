@@ -62,6 +62,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         lstElementos = new javax.swing.JList<>();
         rbtnPalabra = new javax.swing.JRadioButton();
         rbtnLetras = new javax.swing.JRadioButton();
+        jCheckBoxOrdenar = new javax.swing.JCheckBox();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -85,6 +86,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         rbtnLetras.setText("letras");
 
+        jCheckBoxOrdenar.setText("Ordenar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,16 +99,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btnEnviar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(rbtnPalabra)
                         .addGap(18, 18, 18)
                         .addComponent(rbtnLetras))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBoxOrdenar)
+                            .addComponent(btnEnviar))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,7 +124,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(rbtnLetras))
                 .addGap(28, 28, 28)
                 .addComponent(btnEnviar)
-                .addGap(35, 35, 35)
+                .addGap(5, 5, 5)
+                .addComponent(jCheckBoxOrdenar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(68, Short.MAX_VALUE))
         );
@@ -131,7 +138,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Contador contador = new Contador();
         if (rbtnPalabra.isSelected()) {
             String[] listaPalabras = contador.contadorPalabras(txtString.getText());
-
+            if(jCheckBoxOrdenar.isSelected())
+                contador.ordenar(listaPalabras);
             for (String a : listaPalabras) {
                 System.out.println(a);
                 model.addElement(a);
@@ -139,7 +147,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
             
         } else if(rbtnLetras.isSelected()) {
             String[] listaLetras = contador.contadorLetras(txtString.getText());
-
+            if(jCheckBoxOrdenar.isSelected())
+                contador.ordenar(listaLetras);
             for (String a : listaLetras) {
                 System.out.println(a);
                 model.addElement(a);
@@ -187,6 +196,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
+    private javax.swing.JCheckBox jCheckBoxOrdenar;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

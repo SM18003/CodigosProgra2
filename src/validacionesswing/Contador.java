@@ -30,4 +30,18 @@ public class Contador {
         }
         return letras; 
     }
+    public String [] ordenar(String[] lista)
+    {
+        String aux; 
+        for(int i=1; i<=lista.length; i++) {  
+            for(int j=0; j<lista.length-i; j++) { 
+                if(lista[j].compareToIgnoreCase( lista[j+1] ) > 0 ) { 
+                    aux   = lista[j]; 
+                    lista[j]  = lista[j+1]; 
+                    lista[j+1]= aux; 
+                }    
+            } 
+        }
+        return lista;
+    }
 }
